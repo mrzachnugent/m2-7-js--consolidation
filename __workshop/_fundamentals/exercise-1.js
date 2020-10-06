@@ -81,7 +81,67 @@ const inputData = {
 // ⛔️ ['can-blink-lights', null]
 
 function transformData(data) {
-  // Your code here
+  let sortedData = {
+    name: data.name,
+    age: data.age,
+    status: data.status,
+    address: {
+      streetAddress: data.address1,
+      city: data.addressCity,
+      state: data.addressState,
+      country: data.addressCountry,
+    },
+    superpowers: makeSuperpowerArr(data.superpower1, data.superpower2),
+  };
+
+  function makeSuperpowerArr(superpower1, superpower2) {
+    superpowerArr = [];
+    if (superpower1 !== null) {
+      superpowerArr.push(superpower1);
+    }
+    if (superpower2 !== null) {
+      superpowerArr.push(superpower2);
+    }
+    return superpowerArr;
+  }
+
+  let relationships = [
+    {
+      type: "mother",
+      name: data.motherName,
+      age: data.motherAge,
+      status: data.motherStatus,
+      superpowers: makeSuperpowerArr(
+        data.motherSuperpower1,
+        data.motherSuperpower2
+      ),
+    },
+    //The bestfriend relationship is missing from the solution. -> "Each relationship has a `type`, like mother/best-friend/girlfriend"
+    // {
+    //   type: "bestfriend",
+    //   name: data.bestFriendName,
+    //   age: data.bestFriendAge,
+    //   status: data.bestFriendStatus,
+    //   superpowers: makeSuperpowerArr(
+    //     data.bestFriendSuperpower1,
+    //     data.bestFriendSuperpower2
+    //   ),
+    // },
+    {
+      type: "girlfriend",
+      name: data.girlfriendName,
+      age: data.girlfriendAge,
+      status: data.girlfriendStatus,
+      superpowers: makeSuperpowerArr(
+        data.girlfriendSuperpower1,
+        data.girlfriendSuperpower2
+      ),
+    },
+  ];
+
+  sortedData.relationships = relationships;
+
+  return sortedData;
 }
 
 // Use a console.log to verify

@@ -61,7 +61,44 @@ const favoriteDessertsGroupB = {
 // }
 
 function groupByValue(obj) {
-  // do something
+  let objArr = [];
+  for (const dessert in obj) {
+    objArr.push(obj[dessert]);
+  }
+  let alfaObjArr = objArr.sort();
+  // return alfaObjArr;
+  let newObj = {};
+  let singleDesert = [];
+
+  for (let i = 0; i < alfaObjArr.length; i++) {
+    if (alfaObjArr[i] !== alfaObjArr[i + 1]) {
+      singleDesert.push(alfaObjArr[i]);
+    }
+  }
+  // return singleDesert;
+
+  // let sumfing = Object.keys(obj).filter((key) => {
+  //     return obj[key] === "dessert";
+  // })
+  // return sumfing
+  let nameArr = Object.keys(obj);
+
+  // return obj[nameArr[0]]
+
+  singleDesert.forEach((el) => {
+    let desert = el;
+    let groupNameArr = nameArr.filter((name) => {
+      if (obj[name] === desert) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    newObj[el] = groupNameArr;
+  });
+
+  return newObj;
 }
 
 // Verification via console.log()

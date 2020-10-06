@@ -53,7 +53,31 @@ const favoriteDessertsGroupB = {
 // Your function should work with both objects and any other objects of the same shape.
 
 function sortByPopularity(obj) {
-  // Write code
+  let objArr = [];
+  for (const dessert in obj) {
+    objArr.push(obj[dessert]);
+  }
+  let countedDeserts = objArr.reduce((allDeserts, name) => {
+    if (name in allDeserts) {
+      allDeserts[name]++;
+    } else {
+      allDeserts[name] = 1;
+    }
+    return allDeserts;
+  }, {});
+  let sortableArrs = [];
+  for (let dessert in countedDeserts) {
+    sortableArrs.push([dessert, countedDeserts[dessert]]);
+  }
+  let sortedArr = sortableArrs.sort((a, b) => {
+    return b[1] - a[1];
+  });
+
+  let sortedDesNames = sortedArr.map((desert) => {
+    return desert.splice(0, 1)[0];
+  });
+
+  return sortedDesNames;
 }
 
 // Verification via console.log()

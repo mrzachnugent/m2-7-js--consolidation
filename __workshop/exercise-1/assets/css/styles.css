@@ -34,11 +34,12 @@ body {
   margin: 4px;
 }
 
-.bivrip .boom {
+.bivrip,
+.boom {
   background: transparent;
   border: 3px solid var(--ksu-purple);
   padding: 14px 32px;
-  color: var(--ksu-purple);
+  color: var(--ksu-purple) !important;
   position: relative;
   vertical-align: middle;
   font-family: var(--main-font);
@@ -59,11 +60,11 @@ body {
   overflow: hidden;
 }
 
-.boom.active,
+.boom:active,
 .boom:hover {
   background: var(--ksu-purple);
   border-color: transparent;
-  color: white;
+  color: white !important;
 }
 
 .what-now {
@@ -141,7 +142,7 @@ body {
   left: -50px;
   transform: rotate(20deg);
 }
-
+/*food container*/
 .other-stuff .bbbb {
   color: #fff;
   background: var(--ksu-purple);
